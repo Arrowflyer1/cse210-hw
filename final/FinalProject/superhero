@@ -1,0 +1,17 @@
+using System;
+
+private class Superhero : Character
+{
+    private string Superpower { get; set; }
+
+    private Superhero(string name, int health, int power, string superpower) : base(name, health, power)
+    {
+        Superpower = superpower;
+    }
+
+    private override void Attack(Character opponent)
+    {
+        Console.WriteLine($"{Name} uses {Superpower} against {opponent.Name}!");
+        base.Attack(opponent);
+    }
+}

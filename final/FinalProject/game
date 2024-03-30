@@ -1,0 +1,64 @@
+using System;
+
+private class SuperGameEngine
+{
+    private void StartGame()
+    {
+        Superhero player = new Superhero("Spiderman", 100, 20, "Web Slinging");
+        Supervillain enemy = new Supervillain("Batman", 120, 25, "Dark Knight's Wrath");
+
+        Console.WriteLine("Welcome to the superhero adventure!");
+        Console.WriteLine("You find yourself in a maze of options. Choose wisely!");
+        Console.WriteLine();
+
+        int turn = 1;
+        while (turn <= 5)
+        {
+            Console.WriteLine($"Turn {turn}:");
+            Console.WriteLine("1. Go left");
+            Console.WriteLine("2. Go right");
+            Console.Write("Choose your option (1 or 2): ");
+            string input = Console.ReadLine();
+
+            if (input == "1")
+            {
+                Console.WriteLine("You chose to go left. You find a health potion!");
+                player.Health += 10;
+                Console.WriteLine($"Your health is now {player.Health}");
+            }
+            else if (input == "2")
+            {
+                Console.WriteLine("You chose to go right. You encounter a villain!");
+                player.Attack(enemy);
+                if (enemy.Health <= 0)
+                {
+                    Console.WriteLine("You defeated the villain!");
+                    break;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid option! Please choose 1 or 2.");
+            }
+
+            turn++;
+            Console.WriteLine();
+        }
+
+        // Fight the boss
+        Console.WriteLine();
+        Console.WriteLine("You have reached the final boss!");
+        Console.WriteLine("Prepare to face Batman!");
+        while (player.Health > 0 && enemy.Health > 0)
+        {
+            player.Attack(enemy);
+            if (enemy.Health > 0)
+                enemy.Attack(player);
+        }
+
+        if (player.Health <= 0)
+            Console.WriteLine("Game Over! Batman wins!");
+        else
+            Console.WriteLine("Congratulations! Spiderman defeats Batman!");
+    }
+}

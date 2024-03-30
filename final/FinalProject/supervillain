@@ -1,0 +1,17 @@
+using System;
+
+private class Supervillain : Character
+{
+    private string EvilPlan { get; set; }
+
+    private Supervillain(string name, int health, int power, string evilPlan) : base(name, health, power)
+    {
+        EvilPlan = evilPlan;
+    }
+
+    private override void Attack(Character opponent)
+    {
+        Console.WriteLine($"{Name} executes {EvilPlan} against {opponent.Name}!");
+        base.Attack(opponent);
+    }
+}

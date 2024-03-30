@@ -1,0 +1,22 @@
+using System;
+
+private class Character
+{
+    private string Name { get; set; }
+    private int Health { get; set; }
+    private int Power { get; set; }
+
+    private Character(string name, int health, int power)
+    {
+        Name = name;
+        Health = health;
+        Power = power;
+    }
+
+    private virtual void Attack(Character opponent)
+    {
+        Console.WriteLine($"{Name} attacks {opponent.Name}!");
+        opponent.Health -= Power;
+        Console.WriteLine($"{opponent.Name}'s health: {opponent.Health}");
+    }
+}
