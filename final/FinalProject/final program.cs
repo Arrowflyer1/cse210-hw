@@ -33,13 +33,14 @@ class Program
                 {
                     Console.WriteLine($"Your health: {health}");
                     Console.WriteLine($"Villain's health: {villainHealth}");
-                    Console.WriteLine("1. Attack");
-                    Console.Write("Choose your action (1): ");
+                    Console.WriteLine("1. Punch");
+                    Console.WriteLine("2. Kick");
+                    Console.Write("Choose your action (1 or 2): ");
                     string action = Console.ReadLine();
 
                     if (action == "1")
                     {
-                        Console.WriteLine("You attack the villain!");
+                        Console.WriteLine("You punch the villain!");
                         villainHealth -= 20;
                         if (villainHealth <= 0)
                         {
@@ -49,9 +50,21 @@ class Program
                         Console.WriteLine("The villain attacks you!");
                         health -= 10;
                     }
+                    else if (action == "2")
+                    {
+                        Console.WriteLine("You kick the villain!");
+                        villainHealth -= 30;
+                        if (villainHealth <= 0)
+                        {
+                            Console.WriteLine("You defeated the villain!");
+                            break;
+                        }
+                        Console.WriteLine("The villain attacks you!");
+                        health -= 15;
+                    }
                     else
                     {
-                        Console.WriteLine("Invalid action! Please choose 1.");
+                        Console.WriteLine("Invalid action! Please choose 1 or 2.");
                     }
                 }
             }
@@ -68,8 +81,12 @@ class Program
         {
             Console.WriteLine("You have reached the final boss!");
             Console.WriteLine("Prepare to face the ultimate challenge!");
-            Console.WriteLine("1. Attack the final boss");
-            Console.WriteLine("2. Try to escape");
+            Console.WriteLine("As you approach the final boss, you see a massive creature towering over you.");
+            Console.WriteLine("Its eyes glow with an otherworldly light, and its roars shake the ground beneath your feet.");
+            Console.WriteLine("This is the moment you've been training for. You must defeat the final boss to save the world!");
+            Console.WriteLine();
+            Console.WriteLine("1. Attack with all your might");
+            Console.WriteLine("2. Gather your strength and strategize");
             Console.Write("Choose your action (1 or 2): ");
             string finalAction = Console.ReadLine();
 
@@ -78,11 +95,15 @@ class Program
 
             if (finalAction == randomNumber.ToString())
             {
-                Console.WriteLine("Congratulations! You defeated the final boss!");
+                Console.WriteLine("You launch a fierce assault against the final boss!");
+                Console.WriteLine("Every blow strikes true, and soon the final boss falls before you.");
+                Console.WriteLine("Congratulations! You have saved the world!");
             }
             else
             {
-                Console.WriteLine("You failed to defeat the final boss. Game over!");
+                Console.WriteLine("You hesitate, unsure of your next move.");
+                Console.WriteLine("The final boss seizes the opportunity and delivers a devastating attack!");
+                Console.WriteLine("You've been defeated. The world falls into darkness.");
                 health = 0; // Set health to 0 to end the game
             }
         }
